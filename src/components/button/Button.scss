@@ -1,0 +1,53 @@
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+.main-button {
+  background-color: $buttonColor;
+  border: solid 1px $buttonColor;
+  color: $textColorDark;
+  font-weight: 700;
+  width: max-content;
+  padding: 13px 22px;
+  margin-right: 50px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-top: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out 0s;
+}
+.main-button:hover {
+  background-color: $darkBoxShadow2;
+  color: $buttonColor;
+  transition: all 0.3s ease 0s;
+  transform: translateY(-3px);
+}
+
+/* $buttonColor is 1.82:1 on the dark page, short of the 3:1 a control needs
+   to show an edge, so dark mode uses the accent as the surface. */
+.dark-mode .main-button {
+  background-color: $accentColorDark;
+  border-color: $accentColorDark;
+  color: $darkBackground;
+}
+
+.dark-mode .main-button:hover {
+  background-color: $textColorDark;
+  color: $darkBackground;
+}
+/* Media Query */
+@media (max-width: $bpMobile) {
+  .main-button {
+    font-size: 0.938rem;
+    padding: 12px 18px;
+    margin-right: 0px;
+  }
+}
+@media (max-width: $bpNarrowPhone) {
+  .main-button {
+    font-size: 0.75rem;
+  }
+}

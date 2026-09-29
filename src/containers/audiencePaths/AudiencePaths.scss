@@ -1,0 +1,116 @@
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+/* Ranged left while the cards are in a row, centred once they fold -- the rule
+   every section heading follows.
+
+   No max-width: it could never bind on a lone heading, but with `margin: 0
+   auto` it would centre the box and start the heading inside the cards. */
+.audience-paths-header {
+  margin: 0 0 1.75rem;
+}
+
+.audience-paths-heading {
+  font-size: 2rem;
+  margin: 0 0 0.35rem;
+}
+
+
+.audience-paths-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.audience-card {
+  display: flex;
+}
+
+.audience-card-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5rem;
+  border: 2px solid $lightBorder1;
+  border-radius: $cardRadius;
+  background-color: $lightBackground3;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.audience-card-link:hover,
+.audience-card-link:focus-visible {
+  transform: translateY(-4px);
+  border-color: $buttonColor;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.audience-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.audience-card-icon img {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+}
+
+.audience-card-title {
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+  color: $titleColor;
+}
+
+.audience-card-description {
+  margin: 0 0 1rem;
+  line-height: 1.55;
+  color: $textColor;
+  flex-grow: 1;
+}
+
+.audience-card-cta {
+  font-weight: 700;
+  color: $buttonColor;
+}
+
+/* Dark theme */
+.dark-mode .audience-card .audience-card-link {
+  border-color: $darkBorder1;
+  background-color: $darkSurface;
+}
+
+.dark-mode .audience-card .audience-card-link:hover,
+.dark-mode .audience-card .audience-card-link:focus-visible {
+  border-color: $accentColorDark;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .audience-card .audience-card-title {
+  color: $textColorDark;
+}
+
+.dark-mode .audience-card .audience-card-description {
+  color: $subTitleDark;
+}
+
+.dark-mode .audience-card .audience-card-cta {
+  color: $accentColorDark;
+}
+
+@media (max-width: $bpSingleCol) {
+  /* Folded, the cards are one centred column, so the heading centres over
+     them rather than against a column set in from the page edge. */
+  .audience-paths-header {
+    text-align: center;
+  }
+  .audience-paths-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}

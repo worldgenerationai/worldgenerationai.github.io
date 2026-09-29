@@ -1,0 +1,167 @@
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+// News cards are a fixed height so the grid rows line up.
+$cardHeight: 200px;
+// Gutter between the card text and the card edges.
+$cardPadding: 20px;
+// The "→" badge in the top-right corner.
+$badgeSize: 32px;
+// Named because the badge has to cancel it out -- see .go-corner.
+$cardBorder: 2px;
+
+/* Hover is a lift, a border and a shadow -- the same gesture the audience
+   cards use, so the page's two card grids behave alike. The text never leaves
+   its own surface, so one contrast measurement covers it. */
+.blog-container {
+  height: $cardHeight;
+  border: $cardBorder solid $lightBorder1;
+  border-radius: $cardRadius;
+  color: $textColor;
+  background-color: $lightBackground1;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* focus-within, not just hover: the card's whole surface is one link, so a
+   keyboard user tabbing to it gets the same affordance a pointer does. */
+.blog-container:hover,
+.blog-container:focus-within {
+  transform: translateY(-4px);
+  border-color: $buttonColor;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.blog-container:hover .blog-title,
+.blog-container:focus-within .blog-title {
+  color: $buttonColor;
+}
+
+.blog-card {
+  /* flow-root, not block: the title's top margin is what clears the badge, and
+     on a plain block it collapses out of the anchor and pushes the anchor down
+     the card instead. flow-root establishes the block formatting context that
+     stops that without clipping the badge, which overhangs the border. */
+  display: flow-root;
+  position: relative;
+  height: 100%;
+  // Matches .blog-container, so the badge follows the rounded corners.
+  border-radius: $cardRadius;
+  background-color: transparent;
+  // Otherwise the anchor takes the UA's link colour, which differs per theme.
+  color: inherit;
+  text-decoration: none;
+}
+
+/* News cards sit flush with the page in both themes, so the border separates
+   them rather than a change of surface -- unlike the audience cards, which are
+   lifted. $buttonColor barely separates from the dark page, so the border and
+   badge take the accent there. */
+.dark-mode .blog-container {
+  color: $subTitleDark;
+  background-color: $darkBackground;
+  border-color: $darkBorder1;
+}
+
+.dark-mode .blog-container:hover,
+.dark-mode .blog-container:focus-within {
+  border-color: $accentColorDark;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .blog-container:hover .blog-title,
+.dark-mode .blog-container:focus-within .blog-title {
+  color: $accentColorDark;
+}
+
+/* Body copy steps back to the dark body colour, matching the audience cards.
+   The title stays white from App.scss's h1-h6 rule, whichever level it is. */
+.dark-mode .blog-container .small {
+  color: $subTitleDark;
+}
+
+.dark-mode .blog-card .go-corner {
+  background-color: $accentColorDark;
+}
+
+.dark-mode .blog-card .go-arrow {
+  color: $darkBackground;
+}
+
+.blog-title {
+  margin: $badgeSize $cardPadding 14px;
+  color: $blogCardTitleColor;
+  font-size: 1.375rem;
+  line-height: 24px;
+  font-weight: 700;
+  /* Pinned: the card renders as an h2 on /blog and an h3 on the homepage, and
+     index.css tracks h1-h2 and h3-h6 differently. Only its level in the
+     outline should change, not its look. */
+  letter-spacing: -0.03em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: color 0.2s ease;
+}
+
+.small {
+  margin: 0px;
+  padding: 0px $cardPadding;
+  font-size: 1.063rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: $textColor;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  /* The anchor sits inside the container's border, so a badge at 0,0 lands a
+     border-width short of the outer edge. On hover the border turns the
+     badge's own colour and the sliver between reads as a seam, so the badge
+     is pulled out to own the corner outright. */
+  top: -$cardBorder;
+  right: -$cardBorder;
+  width: $badgeSize;
+  height: $badgeSize;
+  overflow: hidden;
+  background-color: $buttonColor;
+  // The top-right corner follows the card; the bottom-left is the wedge cut.
+  border-radius: 0 $cardRadius 0 $badgeSize;
+}
+
+.go-arrow {
+  // Nudged into the visual centre of the wedge.
+  margin-top: -4px;
+  margin-right: -4px;
+  color: $textColorDark;
+  font-family: courier, sans;
+}
+
+@media screen and (max-width: $bpCardNarrow) {
+  .blog-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Must stay after the rules above: same specificity, so source order decides.
+   The hover still changes colour, it just stops moving. */
+@media (prefers-reduced-motion: reduce) {
+  .blog-container,
+  .blog-title {
+    transition: none;
+  }
+
+  .blog-container:hover,
+  .blog-container:focus-within {
+    transform: none;
+  }
+}

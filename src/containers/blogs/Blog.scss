@@ -1,0 +1,77 @@
+/*Blog Cards Layout*/
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+.blog-header-text {
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.all-news-link {
+  display: block;
+  text-align: right;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: $buttonColor;
+  text-decoration: none;
+}
+
+.all-news-link:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .all-news-link {
+  color: $accentColorDark;
+}
+
+.blog-subtitle {
+  text-transform: uppercase;
+}
+.blog-main-div > * {
+  flex: 1;
+  margin-bottom: 30px;
+}
+.blog-main-div {
+  display: flex;
+}
+/* News grid: 6 cards on wide, 4 on medium, 3 on narrow; extras are hidden.
+   The "current & upcoming" card is always first, so post counts are 5/3/2. */
+.blog-text-div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+/* Homepage only -- /blog reuses .blog-text-div and lists every match. */
+#blogs .blog-text-div > *:nth-child(n + 7) {
+  display: none;
+}
+/* Media Query */
+@media (max-width: $bpMobile) {
+  .blog-header-text {
+    font-size: 30px;
+    text-align: center;
+  }
+  .blog-subtitle {
+    font-size: 16px;
+    line-height: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: $bpNewsTwoCol) {
+  .blog-text-div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #blogs .blog-text-div > *:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: $bpNewsOneCol) {
+  .blog-text-div {
+    grid-template-columns: 1fr;
+  }
+  #blogs .blog-text-div > *:nth-child(n + 4) {
+    display: none;
+  }
+}

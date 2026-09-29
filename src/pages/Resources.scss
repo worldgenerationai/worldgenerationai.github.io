@@ -1,0 +1,99 @@
+@use "../globalColor" as *;
+@use "../layout" as *;
+
+.resources-container {
+  max-width: $pageMaxWidth;
+  margin: 50px auto;
+  padding: 30px 20px;
+}
+
+.resources-title {
+  font-size: 2.5rem;
+  color: $titleColor;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .resources-title {
+  color: $textColorDark;
+}
+
+.resources-intro {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.dark-mode .resources-intro {
+  color: $subTitleDark;
+}
+
+.resources-category {
+  margin-bottom: 2.5rem;
+}
+
+.resources-category-title {
+  font-size: 1.6rem;
+  color: $titleColor;
+  border-bottom: 2px solid $buttonColor;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .resources-category-title {
+  color: $textColorDark;
+  border-bottom-color: $accentColorDark;
+}
+
+.resources-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resource-item {
+  margin-bottom: 1.25rem;
+}
+
+.resource-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: $buttonColor;
+  text-decoration: none;
+}
+
+.resource-name:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .resource-name {
+  color: $accentColorDark;
+}
+
+.resource-description {
+  margin: 0.25rem 0 0;
+  color: $textColor;
+  line-height: 1.6;
+}
+
+.dark-mode .resource-description {
+  color: $subTitleDark;
+}
+
+.resources-outro {
+  margin-top: 2.5rem;
+  font-style: italic;
+  color: $textColor;
+}
+
+.dark-mode .resources-outro {
+  color: $subTitleDark;
+}
+
+@media (max-width: $bpMobile) {
+  .resources-title {
+    font-size: 1.9rem;
+  }
+  .resources-category-title {
+    font-size: 1.35rem;
+  }
+}

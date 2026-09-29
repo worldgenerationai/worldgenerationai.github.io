@@ -1,0 +1,5 @@
+# https://www.robotstxt.org/robotstxt.html
+# scripts/prerender.mjs appends the Sitemap line at build time, built from
+# `homepage` in package.json.
+User-agent: *
+Allow: /

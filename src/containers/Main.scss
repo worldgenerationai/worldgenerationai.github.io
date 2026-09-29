@@ -1,0 +1,27 @@
+@use "../globalColor" as *;
+
+/* Body text only. Both themes carry two text levels split at the same place:
+   $textColor under $titleColor in light, $subTitleDark under $textColorDark in
+   dark (App.scss sets those on h1-h6).
+
+   Colour, no background. Components put `.dark-mode` on cards, headings and
+   list items as well as on the page wrapper, and each of those would otherwise
+   lay an opaque page-coloured rectangle over whatever it sits on. */
+.dark-mode {
+  color: $subTitleDark;
+  transition: "0.1s";
+}
+
+/* Only the page wrapper paints the canvas. The theme lives on a div rather
+   than on body, so its background does not propagate to the canvas the way
+   body's would; without min-height a short page shows white below it. */
+#root > .dark-mode {
+  background-color: $darkBackground;
+  min-height: 100vh;
+}
+
+/* The greeting animation may bleed past its block; clip at the viewport so it
+   never introduces a horizontal scrollbar. */
+#main-content {
+  overflow-x: clip;
+}

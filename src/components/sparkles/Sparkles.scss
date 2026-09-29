@@ -1,0 +1,35 @@
+@use "../../globalColor" as *;
+
+/* Yellow in both themes, matching the wordmark, over a halo darker than the
+   light page and lighter than the dark one -- matched by eye, not by ratio;
+   see $sparkleEdgeDark.
+
+   paint-order puts the stroke behind the fill, so it is an outer edge rather
+   than blunting the points. Sized in em to track the text beside it. */
+.sparkles {
+  width: 1.6em;
+  height: auto;
+  flex: none;
+  vertical-align: middle;
+  fill: $highlight;
+  stroke: $sparkleEdge;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  pointer-events: none;
+}
+
+.sparkles-flip {
+  transform: scaleX(-1);
+}
+
+.dark-mode .sparkles {
+  stroke: $sparkleEdgeDark;
+}
+
+/* Decoration must not animate for anyone who asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .sparkles {
+    animation: none;
+  }
+}

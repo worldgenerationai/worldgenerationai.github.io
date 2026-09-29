@@ -1,0 +1,285 @@
+@use "../../globalColor" as *;
+
+/*React-headroom*/
+.headroom-wrapper {
+  max-height: 100px;
+}
+
+/* header */
+
+/* No text colour: the header inherits the wrapper's, as the light one
+   inherits body's. Only the header element takes the canvas -- an opaque
+   background on the nav <ul> would paint over whatever the open menu
+   overlaps. */
+.dark-mode .header {
+  background-color: $darkBackground;
+}
+
+.dark-mode .header li a {
+  color: $subTitleDark;
+}
+
+/* $buttonColor is too close to the dark page to read as a fill, so the
+   accent carries the hover instead, and the label has to flip with it. */
+.dark-mode .header li a:hover {
+  background-color: $accentColorDark;
+  color: $darkBackground;
+}
+
+/* Current page. The fill is identical in both themes, so its label must be
+   too. Left unoutlined despite the yellow being 1.50:1 on the light header:
+   bold weight and aria-current already carry the state, and an outline read
+   as a button rather than a marked page. Tags, with no second cue, do carry
+   one. */
+.header .menu li a.current,
+.dark-mode .header .menu li a.current {
+  background-color: $highlight;
+  color: $highlightLabel;
+  font-weight: 700;
+}
+
+.header {
+  background-color: $lightBackground1;
+  max-width: 100%;
+  padding: 15px 20px;
+  margin: 0px auto;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  padding: 15px 20px;
+  color: $textColor;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-icon:hover {
+  background-color: $headerHoverBG;
+}
+
+.header li.switch-item {
+  display: block;
+  padding: 15px 20px;
+}
+
+/* skip link: hidden above the viewport until focused */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 12px 18px;
+  background-color: $buttonColor;
+  color: $textColorDark;
+  text-decoration: none;
+  border-radius: 4px;
+  transform: translateY(-250%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* The first thing a keyboard user lands on, so it must separate clearly from
+   the page behind it. */
+.dark-mode .skip-link {
+  background-color: $accentColorDark;
+  color: $darkBackground;
+}
+
+/* keyboard focus indicators */
+.header a:focus-visible,
+.header .menu-icon:focus-visible {
+  outline: 3px solid $buttonColor;
+  outline-offset: 2px;
+}
+
+.dark-mode .header a:focus-visible,
+.dark-mode .header .menu-icon:focus-visible {
+  outline-color: $textColorDark;
+}
+
+/* Wordmark. The figures and sparkles are drawn; the name stays text, so it is
+   selectable and read aloud as a word rather than spelled out. */
+.header .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  flex: none;
+  float: left;
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-top: 10px;
+  line-height: normal;
+  /* Royal blue, not the heading colour: the wordmark is a link, so it belongs
+     on the interactive layer rather than competing with the headings below. */
+  color: $buttonColor;
+}
+
+.dark-mode .logo {
+  color: $textColorDark;
+}
+
+/* Adult and child, lifted from the app icon. currentColor so they follow the
+   theme without a second rule. */
+.header .logo-figures {
+  height: 1.08em;
+  width: auto;
+  flex: none;
+  fill: currentColor;
+}
+
+.header .logo-name {
+  font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* The sparkles sit above the AI, so that pair needs to be a positioning
+   context without disturbing the run of the word. */
+.header .logo-ai {
+  position: relative;
+  display: inline-block;
+}
+
+/* Yellow in both themes, over the same halo the decorative sparkles carry.
+   paint-order puts the stroke behind the fill, so it reads as an outer edge
+   rather than blunting the points. Sized in em to track the wordmark. */
+.header .logo-sparkles {
+  position: absolute;
+  left: 50%;
+  bottom: 0.78em;
+  transform: translateX(-50%);
+  width: 1.5em;
+  height: auto;
+  fill: $highlight;
+  stroke: $sparkleEdge;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  pointer-events: none;
+}
+
+.dark-mode .logo-sparkles {
+  stroke: $sparkleEdgeDark;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+  background: transparent;
+  border: none;
+}
+
+.header .menu-icon .navicon {
+  background: $buttonColor;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.dark-mode .header .menu-icon .navicon {
+  background: $textColorDark;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: $buttonColor;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.dark-mode .header .menu-icon .navicon:before,
+.dark-mode .header .menu-icon .navicon:after {
+  background: $textColorDark;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* open menu state (aria-expanded is set by the menu button in Header.js) */
+
+.header .menu.menu-open {
+  max-height: 486px;
+}
+
+/* Declared after the themed .navicon rules and at equal specificity, so the
+   open state wins on order. */
+.header .menu-icon[aria-expanded="true"] .navicon {
+  background: transparent;
+}
+
+.header .menu-icon[aria-expanded="true"] .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-icon[aria-expanded="true"] .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-icon[aria-expanded="true"] .navicon:before,
+.header .menu-icon[aria-expanded="true"] .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header .menu {
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+@media (max-width: 960px) and (min-width: 768px) {
+  .header {
+    font-size: 12px;
+  }
+}

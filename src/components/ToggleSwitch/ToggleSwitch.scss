@@ -1,0 +1,90 @@
+@use "../../globalColor" as *;
+
+/* The sun and moon are real emoji characters, so without this a drag across
+   the header selects them. It is a switch, not text. */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Visually hide the checkbox; the slider is the visual control */
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $toggleSwitchSliderBG;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 28px;
+  left: 0;
+  bottom: 0;
+  background-color: $textColorDark;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* Track and thumb keep their colours across themes; only position and the
+   emoji change, so the switch reads as one object rather than two.
+
+   A dark track under a light thumb is also the only option available: on the
+   navy page anything darker drops below 3:1 and disappears.
+   $toggleSwitchSliderBG is the single value clearing 3:1 on both pages
+   (4.41:1 on white, 3.64:1 on navy) and under the thumb (4.41:1). */
+input:focus-visible + .slider {
+  outline: 3px solid $buttonColor;
+  outline-offset: 2px;
+}
+
+input:checked:focus-visible + .slider {
+  outline-color: $accentColorDark;
+}
+
+input:checked + .slider::before,
+input:checked + .slider > .emoji {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.emoji {
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
+}
+

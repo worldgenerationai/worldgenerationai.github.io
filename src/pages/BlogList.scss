@@ -1,0 +1,71 @@
+@use "../globalColor" as *;
+@use "../layout" as *;
+
+/* A lifted panel grouping the filter pills, a step above the page in both
+   themes. */
+.blog-tags-filter {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: $lightBackground3;
+  border-radius: 8px;
+
+  @media (max-width: $bpMobile) {
+    padding: 15px;
+  }
+}
+
+.dark-mode .blog-tags-filter {
+  background-color: $darkSurface;
+}
+
+.tags-label {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: $textColor;
+  font-size: 1rem;
+}
+
+.dark-mode .tags-label {
+  color: $subTitleDark;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-button {
+  background-color: transparent;
+  border: 2px solid $buttonColor;
+  color: $buttonColor;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+
+  /* A selected filter is the same yellow badge the post shows, so a tag looks
+     like a tag wherever it appears, identically in both themes.
+
+     The border stays blue: yellow is 1.50:1 on white, so an all-yellow pill
+     would lose its boundary and fail WCAG 1.4.11. */
+  &:hover,
+  &.active {
+    background-color: $highlight;
+    color: $highlightLabel;
+  }
+}
+
+.dark-mode .tag-button {
+  border-color: $accentColorDark;
+  color: $accentColorDark;
+
+  &:hover,
+  &.active {
+    background-color: $highlight;
+    border-color: $highlight;
+    color: $highlightLabel;
+  }
+}

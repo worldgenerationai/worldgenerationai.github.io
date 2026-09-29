@@ -1,0 +1,44 @@
+@use "../globalColor" as *;
+
+.not-found-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 60px 20px 80px;
+  text-align: center;
+  min-height: 45vh;
+}
+
+.not-found-title {
+  font-size: 2.5rem;
+  color: $titleColor;
+}
+
+.dark-mode .not-found-title {
+  color: $textColorDark;
+}
+
+.not-found-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: $textColor;
+}
+
+.dark-mode .not-found-text {
+  color: $subTitleDark;
+}
+
+.not-found-home-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: $buttonColor;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.not-found-home-link:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .not-found-home-link {
+  color: $accentColorDark;
+}

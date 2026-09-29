@@ -1,0 +1,108 @@
+@use "../globalColor" as *;
+@use "../layout" as *;
+
+.publications-container {
+  max-width: $pageMaxWidth;
+  margin: 50px auto;
+  padding: 30px 20px;
+}
+
+.publications-title {
+  font-size: 2.5rem;
+  color: $titleColor;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .publications-title {
+  color: $textColorDark;
+}
+
+.publications-intro {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.dark-mode .publications-intro {
+  color: $subTitleDark;
+}
+
+.publications-section {
+  margin-bottom: 2.5rem;
+}
+
+.publications-section-title {
+  font-size: 1.6rem;
+  color: $titleColor;
+  border-bottom: 2px solid $buttonColor;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .publications-section-title {
+  color: $textColorDark;
+  border-bottom-color: $accentColorDark;
+}
+
+.publications-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hanging-indent citation style. */
+.publication {
+  padding-left: 2rem;
+  text-indent: -2rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: $textColor;
+}
+
+.dark-mode .publication {
+  color: $subTitleDark;
+}
+
+.publication-authors {
+  color: $textColor;
+}
+
+.dark-mode .publication-authors {
+  color: $subTitleDark;
+}
+
+.publication-work-title {
+  font-style: italic;
+}
+
+.publication-venue {
+  color: $textColor;
+}
+
+.dark-mode .publication-venue {
+  color: $subTitleDark;
+}
+
+.publication-link {
+  color: $buttonColor;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.publication-link:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .publication-link {
+  color: $accentColorDark;
+}
+
+@media (max-width: $bpMobile) {
+  .publications-title {
+    font-size: 1.9rem;
+  }
+  .publications-section-title {
+    font-size: 1.35rem;
+  }
+}

@@ -1,0 +1,75 @@
+@use "./globalColor" as *;
+
+/* The light theme's base colours, named rather than left to the browser --
+   an unset canvas follows the OS, which would put light text on a dark one. */
+body {
+  color: $textColor;
+  background-color: $lightBackground1;
+}
+
+/* Baseline for headings that set no colour of their own. The dark rule is not
+   optional: an element selector beats inherited colour, so without it these
+   would stay dark blue on the dark canvas. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $titleColor;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: $textColorDark;
+}
+
+.subTitle {
+  color: $textColor;
+}
+
+/* Wins over the plain `.subTitle` rule on specificity alone -- (0,2,0)
+   against (0,1,0) -- so no !important is needed. */
+.dark-mode .subTitle {
+  color: $subTitleDark;
+}
+
+/* entrance animation; disabled for users who prefer reduced motion */
+.fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    animation: none;
+  }
+}
+
+/* keyboard focus indicators, both themes */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid $buttonColor;
+  outline-offset: 2px;
+}
+
+.dark-mode a:focus-visible,
+.dark-mode button:focus-visible,
+.dark-mode input:focus-visible {
+  outline-color: $accentColorDark;
+}

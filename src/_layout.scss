@@ -1,0 +1,56 @@
+/* Shared layout values. Colours live in _globalColor.scss. */
+
+/* Widths */
+
+// Shared by every homepage block, so they line up.
+$contentMaxWidth: 1320px;
+
+// Reading width for text-heavy pages.
+$pageMaxWidth: 900px;
+
+/* Shape */
+
+$cardRadius: 10px;
+
+/* Breakpoints */
+
+// The greeting animation stacks under the text rather than overlapping it.
+$bpGreetingStack: 1200px;
+// News grid: three columns to two, then to one.
+$bpNewsTwoCol: 1100px;
+$bpNewsOneCol: 700px;
+// Audience cards fold to a single column.
+$bpSingleCol: 900px;
+$bpMobile: 768px;
+// Card text steps down a size.
+$bpCardNarrow: 480px;
+// The oversized display headings stop fitting their line, before anything
+// else reflows.
+$bpHeadingStep: 1380px;
+// The page gives up its side margins rather than squeeze the text further.
+$bpNarrowPhone: 320px;
+
+/* Header.scss switches its nav at `48em`, not $bpMobile. Same 768px at a
+   default root size, but an em query also responds when a visitor enlarges
+   their base font, and the nav must fold when the text grows. Do not make it
+   "consistent" with the px token. */
+
+/* Patterns */
+
+/* A list entry whose marker is an emoji rather than a bullet: the marker sits
+   at the list edge and every line of the entry starts after it, so a wrapped
+   entry lines up with itself.
+
+   Flex rather than a negative text-indent, so the offset is the marker's own
+   rendered width at any font size. */
+@mixin emoji-list-item {
+  display: flex;
+  align-items: baseline;
+  // The marker carries a trailing space; flex drops white space at the end of
+  // an item, so the gap puts it back.
+  gap: 0.25em;
+
+  > span {
+    flex: none;
+  }
+}

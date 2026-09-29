@@ -1,0 +1,242 @@
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+// Reading measure for the panel's copy, and the parts an item is built from.
+// $itemWidth is computed from these, so widening the QR or its gutter cannot
+// quietly widen the copy past the measure.
+$textMeasure: 400px;
+$qrSize: 132px;
+$itemGap: 1rem;
+$listGap: 1.5rem;
+// Stacked, only space separates one call to action from the next, so the
+// items need more of it than they do side by side.
+$listRowGap: 2.5rem;
+
+// One item: the QR plus the copy beside it. Folded, the QR sits above instead
+// and the item is just the measure, so the copy reads the same width either way.
+$itemWidth: calc(#{$qrSize} + #{$itemGap} + #{$textMeasure});
+
+/* The call-to-action band. No fill of its own, so its text keeps the page
+   background -- the highest-contrast ground available.
+
+   The yellow is an edge bar rather than a fill: flooding a band this size
+   forces every line inside onto one label colour, and the panel's secondary
+   text drops to 3.45:1 on yellow, below AA. Inset, so it follows the corner
+   radius and takes no layout. */
+.get-involved-card {
+  padding: 1.75rem 2rem;
+  // The yellow bar and the glow already mark the band, so the outline is just
+  // the page's container line.
+  border: 2px solid $lightBorder1;
+  border-radius: $cardRadius;
+  color: $textColor;
+  // Two shadows: the inset edge bar, and the one glow on the page, on the
+  // block meant to draw the eye.
+  box-shadow: inset 10px 0 0 $highlight, 0 0 36px $lightBoxShadow;
+}
+
+.dark-mode .get-involved-card {
+  border-color: $darkBorder1;
+  color: $subTitleDark;
+  // Black is invisible on navy, so the dark theme lifts with light.
+  box-shadow: inset 10px 0 0 $highlight, 0 0 36px $darkGlow;
+
+  // Card copy steps back to the dark body colour; the panel's own subtitle is
+  // not card copy and stays with the headings.
+  .get-involved-item-description {
+    color: $subTitleDark;
+  }
+
+}
+
+/* Starts on the panel's edge, which the items start on too, so the heading
+   lines up with the section headings outside the panel. Capped and centred
+   instead once folded. */
+.get-involved-header {
+  margin: 0 0 1.25rem;
+}
+
+.get-involved-heading {
+  font-size: 1.8rem;
+  margin: 0 0 0.35rem;
+}
+
+.get-involved-subtitle {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* The panel spans the page; its copy should not. Tracks stop at one item's
+   width and sit at either end, so the width left over goes into the gutter
+   between them rather than into the line length -- or into a margin, which
+   would push both items out of line with the heading. */
+.get-involved-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, #{$itemWidth}));
+  justify-content: space-between;
+  gap: $listRowGap $listGap;
+}
+
+/* QR code beside the text, so the form can also be reached by scanning. */
+.get-involved-item {
+  display: flex;
+  align-items: center;
+  gap: $itemGap;
+}
+
+.get-involved-qr-button {
+  flex: 0 0 auto;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: zoom-in;
+  line-height: 0;
+}
+
+// A percentage radius scales with the image, matching the artwork's own
+// transparent corners so no white corner shows.
+.get-involved-qr {
+  width: $qrSize;
+  height: $qrSize;
+  border-radius: 4%;
+  display: block;
+}
+
+.get-involved-item-text {
+  min-width: 0;
+}
+
+.get-involved-item-title {
+  font-size: 1.2rem;
+  margin: 0 0 0.35rem;
+}
+
+.get-involved-item-description {
+  margin: 0 0 0.6rem;
+  line-height: 1.55;
+}
+
+/* Colour belongs on the class, not inside .get-involved-card: the QR dialog
+   reuses this class and is portalled to <body>, out of the card's reach. */
+.get-involved-link {
+  color: $buttonColor;
+  font-weight: 700;
+  text-decoration: none;
+  // The line box gives 23px, a pixel under WCAG 2.2's 24px target. Vertical
+  // padding on an inline element grows the hit area without moving anything.
+  padding: 4px 0;
+}
+
+.dark-mode .get-involved-link {
+  color: $accentColorDark;
+}
+
+.get-involved-link:hover {
+  text-decoration: underline;
+}
+
+/* Enlarged QR dialog */
+.qr-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.qr-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: min(92vw, 460px);
+  padding: 1.25rem;
+  border-radius: 12px;
+  background-color: $lightBackground1;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.dark-mode.qr-dialog {
+  background-color: $darkBackground;
+  border: 2px solid $accentColorDark;
+}
+
+.qr-dialog-image {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 4%;
+}
+
+/* Portalled to <body>, outside the page's .dark-mode wrapper, so the dialog
+   carries its own class -- hence the compound selector. */
+.dark-mode.qr-dialog .qr-dialog-link {
+  color: $accentColorDark;
+}
+
+.qr-dialog-close {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid $buttonColor;
+  border-radius: 6px;
+  background: none;
+  color: $buttonColor;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.qr-dialog-close:hover {
+  background-color: $buttonColor;
+  color: $textColorDark;
+}
+
+.dark-mode .qr-dialog-close {
+  border-color: $accentColorDark;
+  color: $accentColorDark;
+}
+
+.dark-mode .qr-dialog-close:hover {
+  background-color: $accentColorDark;
+  color: $darkBackground;
+}
+
+@media (max-width: $bpMobile) {
+  .get-involved-card {
+    padding: 1.25rem;
+  }
+  .get-involved-heading {
+    font-size: 1.5rem;
+  }
+  /* Folded, the heading centres as every other section's does at this width,
+     while the body copy stays ranged left. Header and list take the folded
+     width together and both centre -- with one item to a row there is no
+     gutter left to absorb the spare width. */
+  .get-involved-header {
+    max-width: $textMeasure;
+    margin: 0 auto 1.25rem;
+    text-align: center;
+  }
+  .get-involved-list {
+    grid-template-columns: 1fr;
+    max-width: $textMeasure;
+    margin: 0 auto;
+  }
+  // The QR stacks above its text and centres over it: the box centres, not
+  // the words.
+  .get-involved-item {
+    flex-direction: column;
+    align-items: center;
+  }
+  .get-involved-qr {
+    width: 150px;
+    height: 150px;
+  }
+}

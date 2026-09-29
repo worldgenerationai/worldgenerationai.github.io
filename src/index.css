@@ -1,0 +1,63 @@
+/* Fonts self-hosted via @fontsource, which ships the OFL licence in-package.
+   No third-party origins -- see docs/branding.md.
+
+   Every face is imported at an explicit weight. A @font-face without a
+   font-weight descriptor registers as 400 only, and the browser then
+   silently synthesises a fake bold for anything heavier. */
+
+/* Roboto -- body and UI. 700 is not optional: links, buttons and CTAs are
+   body-family text set bold. */
+@import "@fontsource/roboto/latin-400.css";
+@import "@fontsource/roboto/latin-500.css";
+@import "@fontsource/roboto/latin-700.css";
+
+/* Montserrat -- headings and display (Oxford complementary) */
+@import "@fontsource/montserrat/latin-600.css";
+@import "@fontsource/montserrat/latin-700.css";
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Form controls inherit neither typography nor colour from the page: a
+   <button> renders in the UA's own font and in `buttontext`.
+
+   Family and colour only, not the `font` shorthand, which would also inherit
+   line-height and retrofit 1.5 onto controls sized for `normal`. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  /* 1.5 line-height for body copy, per UCL's published web spec. */
+  font: 400 19px/1.5 Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Headings take the display face. Tracking follows UCL's spec: -0.04em for
+   headlines, -0.03em for subheadings, and 1.1/1.2 line-height respectively. */
+h1,
+h2 {
+  font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}

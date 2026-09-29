@@ -1,0 +1,78 @@
+@use "../../globalColor" as *;
+@use "../../layout" as *;
+
+/* The text is the only child, and carries no left margin, so the section
+   starts on the same edge as every other one. */
+.people-main-div {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.people-main-div > * {
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.people-heading {
+  font-size: 56px;
+  font-weight: 400;
+}
+
+.people-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.people-list li {
+  @include emoji-list-item;
+  margin: 16px 0;
+}
+
+.people-group-title {
+  font-size: 1em;
+  margin: 16px 0 8px;
+}
+.people-text-row-div {
+  display: flex;
+}
+
+.people-text-col-div {
+  flex: 50%
+}
+
+/* Media Query */
+@media (max-width: $bpHeadingStep) {
+  .people-heading {
+    font-size: 40px;
+  }
+}
+@media (max-width: $bpMobile) {
+  .people-heading {
+    font-size: 30px;
+    text-align: center;
+  }
+  .greeting-text-p {
+    font-size: 16px;
+    line-height: normal;
+  }
+  .people-main-div {
+    flex-direction: column;
+  }
+  .people-text-div {
+    margin: 20px;
+  }
+  .people-text {
+    font-size: 16px;
+  }
+  .people-text-subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+  .people-text-row-div {
+    flex-direction: column;
+  }
+  .people-text-col-div {
+    flex: 100%;
+  }
+}
