@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a9166efb.css",
+    "main.js": "/static/js/main.d4481007.js",
+    "static/js/423.eaede576.chunk.js": "/static/js/423.eaede576.chunk.js",
+    "static/js/607.0de710e6.chunk.js": "/static/js/607.0de710e6.chunk.js",
+    "static/js/251.60faf4f3.chunk.js": "/static/js/251.60faf4f3.chunk.js",
+    "static/media/qr-codesign-prototypes.png": "/static/media/qr-codesign-prototypes.d7e4b97bf47eedd90ff7.png",
+    "static/media/childrenWaving.svg": "/static/media/childrenWaving.f2544cb0f7105c193024c3a9c517d960.svg",
+    "static/media/qr-youth-ai-research.png": "/static/media/qr-youth-ai-research.11b9bf644b087eca74d1.png",
+    "static/media/oxford-cs-neg.svg": "/static/media/oxford-cs-neg.d0a7c665db41f086ea980cbca09c60be.svg",
+    "static/media/oxford-cs-pos.svg": "/static/media/oxford-cs-pos.ffefca341027509d3e04f7325f3468cf.svg",
+    "static/media/ieai-dark.svg": "/static/media/ieai-dark.894c2f57d7def9d2a0ffbcd3ab69b9fb.svg",
+    "static/media/ieai-light.svg": "/static/media/ieai-light.ec37217b03cd19dbd169c621c23d3d27.svg",
+    "static/media/roboto-latin-700-normal.woff2": "/static/media/roboto-latin-700-normal.d89b03c583b9adb99987.woff2",
+    "static/media/roboto-latin-500-normal.woff2": "/static/media/roboto-latin-500-normal.1c7e8aa0ba84e4f92e5f.woff2",
+    "static/media/roboto-latin-400-normal.woff2": "/static/media/roboto-latin-400-normal.0d16261b107ca3336eeb.woff2",
+    "static/media/roboto-latin-700-normal.woff": "/static/media/roboto-latin-700-normal.53f3933bc81f81da12ed.woff",
+    "static/media/roboto-latin-500-normal.woff": "/static/media/roboto-latin-500-normal.f4ee5bd9ce239f6e5a1a.woff",
+    "static/media/roboto-latin-400-normal.woff": "/static/media/roboto-latin-400-normal.c1b1c5c6bf22ab6cb701.woff",
+    "static/media/montserrat-latin-700-normal.woff": "/static/media/montserrat-latin-700-normal.fb35cb0bfa0f7f420a5c.woff",
+    "static/media/montserrat-latin-600-normal.woff": "/static/media/montserrat-latin-600-normal.9e40599e76894a843191.woff",
+    "static/media/montserrat-latin-700-normal.woff2": "/static/media/montserrat-latin-700-normal.9ced692b9436db6be1ff.woff2",
+    "static/media/montserrat-latin-600-normal.woff2": "/static/media/montserrat-latin-600-normal.d30160b75e24bbce5e90.woff2",
+    "static/media/ucl-inverted.svg": "/static/media/ucl-inverted.72029ddcd8c26545242ff7108f886266.svg",
+    "static/media/ucl.svg": "/static/media/ucl.d1a6a3d38c28ede89ebe071149529f63.svg",
+    "static/media/ukri-inverted.svg": "/static/media/ukri-inverted.54e494937abb5a7b663ad1749a5c1f67.svg",
+    "static/media/ukri.svg": "/static/media/ukri.9e2bb533d57a139a9e8f8c11c4da695e.svg",
+    "index.html": "/index.html",
+    "main.a9166efb.css.map": "/static/css/main.a9166efb.css.map",
+    "main.d4481007.js.map": "/static/js/main.d4481007.js.map",
+    "423.eaede576.chunk.js.map": "/static/js/423.eaede576.chunk.js.map",
+    "607.0de710e6.chunk.js.map": "/static/js/607.0de710e6.chunk.js.map",
+    "251.60faf4f3.chunk.js.map": "/static/js/251.60faf4f3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9166efb.css",
+    "static/js/main.d4481007.js"
+  ]
+}

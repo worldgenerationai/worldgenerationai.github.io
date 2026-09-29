@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CHAILD">
+  <!-- Safari pinned tab stencil. Solid black on transparent by design:
+       Safari masks it and takes the tint from the mask-icon colour attribute
+       in index.html. -->
+  <path fill="#000000" d="M31 9C31 19.14 33.86 22 44 22C33.86 22 31 24.86 31 35C31 24.86 28.14 22 18 22C28.14 22 31 19.14 31 9Z"/>
+  <path fill="#000000" d="M40 32C40 38.24 41.76 40 48 40C41.76 40 40 41.76 40 48C40 41.76 38.24 40 32 40C38.24 40 40 38.24 40 32Z"/>
+  <path fill="#000000" d="M25 38C25 42.68 26.32 44 31 44C26.32 44 25 45.32 25 50C25 45.32 23.68 44 19 44C23.68 44 25 42.68 25 38Z"/>
+  <circle cx="11" cy="21" r="5.5" fill="#000000"/>
+  <path d="M5 54V34.5q0-6 6-6t6 6v19.5z" fill="#000000"/>
+  <circle cx="53" cy="32" r="4.5" fill="#000000"/>
+  <path d="M48 54V43.5q0-5 5-5t5 5v10.5z" fill="#000000"/>
+</svg>
