@@ -1,4 +1,4 @@
-# generationai-world.github.io
+# worldgenerationai.github.io
 
 
 Hello
