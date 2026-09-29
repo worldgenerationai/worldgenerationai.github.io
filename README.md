@@ -1,6 +1,6 @@
 # worldgenerationai.github.io
 
-Website for the CHAILD project, hosted at [chaild.org](https://chaild.org).
+Website for Generation AI World, a Non-for Project to create child-centred AI futures, hosted at [worldgenerationai.github.io](https://worldgenerationai.github.io).
 
 The site is a React single-page app built with [Create React App](https://create-react-app.dev/), based on the [DeveloperFolio](https://github.com/saadpasta/developerFolio) template. Source code lives on the `main` branch; the built site is published from the `gh-pages` branch (no Jekyll).
 
@@ -75,7 +75,7 @@ News posts are markdown files served from `public/content/blog/`.
    screen readers.
 
 3. Add the slug to the `blogSlugs` array in `src/portfolio.js`. Posts are sorted by `date` automatically (newest first) on both the homepage and the `/blog` list, so the array order doesn't matter — just add the slug anywhere.
-4. Put any images in `public/content/blog/images/` (reference them as `/content/blog/images/<name>`) and PDFs or other documents in `public/static/media/` (reference them as `/static/media/<name>`). Use descriptive filenames, e.g. `CHAILD-white-paper-2026.pdf`.
+4. Put any images in `public/content/blog/images/` (reference them as `/content/blog/images/<name>`) and PDFs or other documents in `public/static/media/` (reference them as `/static/media/<name>`). Use descriptive filenames, e.g. `generationai-white-paper-2026.pdf`.
 5. Preview locally with `npm start`, then commit and deploy (below).
 
 Other site content (homepage sections, team members, social links, footer grant info, etc.) is configured in `src/portfolio.js`. The footer's partner/funder logos are defined in `src/components/footer/Footer.js`, with image assets in `src/assets/images/logos/` — each partner has a light-theme and a dark-theme logo variant so the strip stays legible in both themes.
@@ -86,7 +86,7 @@ Other site content (homepage sections, team members, social links, footer grant 
 npm run deploy
 ```
 
-This builds the site and pushes the `build/` directory to the `gh-pages` branch, which GitHub Pages serves at chaild.org. The `CNAME` file comes from `public/`, so it is included automatically.
+This builds the site and pushes the `build/` directory to the `gh-pages` branch, which GitHub Pages serves at worldgenerationai.github.io. The `CNAME` file comes from `public/`, so it is included automatically.
 
 Client-side routing works on GitHub Pages via `public/404.html`, which GitHub serves for any path with no matching file. It runs a small [spa-github-pages](https://github.com/rafgraph/spa-github-pages) redirect (paired with a decode snippet at the top of `public/index.html`) that hands the path off to the SPA, so deep links like `/blog/<slug>` load correctly while genuinely unknown paths render the in-app "Page not found" view.
 
